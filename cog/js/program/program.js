@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View ,Button,ScrollView} from 'react-native';
+import { AppRegistry, StyleSheet, Text, View ,Button,ScrollView,Dimensions} from 'react-native';
 //import App from './App';
 import {
     StackNavigator,
 } from 'react-navigation';
+import { MenuProvider } from 'react-native-popup-menu';
+import {
+  Menu,
+  MenuOptions,
+  MenuOption,
+  MenuTrigger,
+} from 'react-native-popup-menu';
+
 
 export default class program extends React.Component  {
     static navigationOptions = {
@@ -14,9 +22,27 @@ export default class program extends React.Component  {
     render() {
 
         return (
+    
+          
             <ScrollView style={{margin:16,borderColor:'black', flex: 1, flexDirection: 'column'}}>
+                        <MenuProvider >  
+  <View style={styles.menu}>
+                <Menu>
+              <MenuTrigger text='List' />
+             <MenuOptions>
+              <MenuOption onSelect={() => this.props.navigation.navigate('Introduction')} text='Introduction' />
+              <MenuOption onSelect={() => this.props.navigation.navigate('Submission')} text='Submission' />
+              <MenuOption onSelect={() => this.props.navigation.navigate('venue')} text='venue' />
+               <MenuOption onSelect={() => this.props.navigation.navigate('contact')} text='contact' />
+              <MenuOption onSelect={() => this.props.navigation.navigate('call_for_papers')} text='call_for_papers' />
+              <MenuOption onSelect={() => this.props.navigation.navigate('program')} text='program' />
+               <MenuOption onSelect={() => this.props.navigation.navigate('registration')} text='registration' />
+               <MenuOption onSelect={() => this.props.navigation.navigate('sponsor')} text='sponsor' />
+             </MenuOptions>
+              </Menu>
+          </View>
 
-
+             <View>
                 <Text style={styles.text}>
                     Journée 1: 29 octobre 2018: {'\n'}Possibilité de biotransformation à partir des produits agricoles?
                 </Text>
@@ -87,20 +113,8 @@ export default class program extends React.Component  {
                                 {'\n'}
                     16h15 – 17h45: Ateliers et exposés oraux
                 </Text>
-
-                {/*<Text style={styles.text_c}>*/}
-                    {/*The programm is available*/}
-
-                {/*</Text>*/}
-                {/*<Text style={styles.text_r}*/}
-
-                          {/*onPress={() =>*/}
-                          {/*navigation.navigate('pdf')*/}
-
-
-                      {/*} >here*/}
-                {/*</Text>*/}
-
+ </View>
+       </MenuProvider >  
 
             </ScrollView>
         );
@@ -129,7 +143,13 @@ const styles = StyleSheet.create({
     },
 
 
+  menu: {
+       
+        width: Dimensions.get('window').width, height: 15,
 
+
+
+    } ,
 });
 
 

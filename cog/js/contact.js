@@ -5,6 +5,14 @@ import {
     StackNavigator,
 } from 'react-navigation';
 
+import { MenuProvider } from 'react-native-popup-menu';
+import {
+  Menu,
+  MenuOptions,
+  MenuOption,
+  MenuTrigger,
+} from 'react-native-popup-menu';
+
 
 export default class contact extends React.Component {
 
@@ -15,6 +23,22 @@ export default class contact extends React.Component {
     render() {
 
         return (
+               <MenuProvider >
+            <View style={styles.menu}>
+                <Menu>
+              <MenuTrigger text='List' />
+             <MenuOptions>
+              <MenuOption onSelect={() => this.props.navigation.navigate('Introduction')} text='Introduction' />
+              <MenuOption onSelect={() => this.props.navigation.navigate('Submission')} text='Submission' />
+              <MenuOption onSelect={() => this.props.navigation.navigate('venue')} text='venue' />
+               <MenuOption onSelect={() => this.props.navigation.navigate('contact')} text='contact' />
+              <MenuOption onSelect={() => this.props.navigation.navigate('call_for_papers')} text='call_for_papers' />
+              <MenuOption onSelect={() => this.props.navigation.navigate('program')} text='program' />
+               <MenuOption onSelect={() => this.props.navigation.navigate('registration')} text='registration' />
+               <MenuOption onSelect={() => this.props.navigation.navigate('sponsor')} text='sponsor' />
+             </MenuOptions>
+              </Menu>
+          </View>
             <ScrollView style={{margin:16,borderColor:'black', flex: 1, flexDirection: 'column'}}>
                  <Text style={styles.text_c}>
                     General chair: contact@iceassm.org{'\n'}{'\n'}
@@ -23,7 +47,9 @@ export default class contact extends React.Component {
 
                     Webmaster:  webmaster@iceassm.org
                 </Text>
-            </ScrollView>
+            </ScrollView>    
+               </MenuProvider >
+
         );
     }
 

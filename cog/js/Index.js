@@ -5,6 +5,13 @@ import {
 } from 'react-navigation';
 
 
+import { MenuProvider } from 'react-native-popup-menu';
+import {
+  Menu,
+  MenuOptions,
+  MenuOption,
+  MenuTrigger,
+} from 'react-native-popup-menu';
 
 
 export default class Intex extends React.Component{
@@ -18,13 +25,30 @@ export default class Intex extends React.Component{
 
     render() {
         return (
-           
-
+          
+            <MenuProvider >
+            <View style={styles.menu}>
+                <Menu>
+              <MenuTrigger text='List' />
+             <MenuOptions>
+              <MenuOption onSelect={() => this.props.navigation.navigate('Introduction')} text='Introduction' />
+              <MenuOption onSelect={() => this.props.navigation.navigate('Submission')} text='Submission' />
+              <MenuOption onSelect={() => this.props.navigation.navigate('venue')} text='venue' />
+               <MenuOption onSelect={() => this.props.navigation.navigate('contact')} text='contact' />
+              <MenuOption onSelect={() => this.props.navigation.navigate('call_for_papers')} text='call_for_papers' />
+              <MenuOption onSelect={() => this.props.navigation.navigate('program')} text='program' />
+               <MenuOption onSelect={() => this.props.navigation.navigate('registration')} text='registration' />
+               <MenuOption onSelect={() => this.props.navigation.navigate('sponsor')} text='sponsor' />
+             </MenuOptions>
+              </Menu>
+          </View>
            <View  style={{flex: 1, flexDirection: 'row',backgroundColor:'#ffffff',
                justifyContent: 'flex-start', }}>
               
+
             <View >
            
+      
 
             <Text style={styles.bt}
 
@@ -107,7 +131,7 @@ export default class Intex extends React.Component{
 
 
           </View>
-
+ </MenuProvider>
 
       );
     }
@@ -135,7 +159,21 @@ const styles = StyleSheet.create({
 
 
     } ,
+     menu: {
+       backgroundColor:'#ffffff',
+      width: Dimensions.get('window').width, height: 25,
 
+
+
+    } ,
+      text: {
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
+        color:'#0066cc'
+
+    },
+  
 
 });
 

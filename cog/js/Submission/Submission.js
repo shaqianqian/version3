@@ -5,6 +5,14 @@ import { AppRegistry, StyleSheet, Text, View ,Button,ScrollView,NetInfo} from 'r
 import {
     StackNavigator,
 } from 'react-navigation';
+import { MenuProvider } from 'react-native-popup-menu';
+import {
+  Menu,
+  MenuOptions,
+  MenuOption,
+  MenuTrigger,
+} from 'react-native-popup-menu';
+
 
 
 export default class Submission extends React.Component {
@@ -16,6 +24,7 @@ export default class Submission extends React.Component {
     render() {
 
         return (
+             
               <ScrollView style={{margin:16,borderColor:'black', flex: 1, flexDirection: 'column'}}>
                 <Text style={styles.text_c}>
 
@@ -34,7 +43,7 @@ export default class Submission extends React.Component {
                       } >Submit
                 </Text>
 
-            </ScrollView>
+            </ScrollView> 
         );
     }
 

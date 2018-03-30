@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View ,Button,ScrollView,NetInfo} from 'react-native';
+import { AppRegistry, StyleSheet, Text, View ,Button,ScrollView,NetInfo, Dimensions,} from 'react-native';
 //import App from './App';
 import {
     StackNavigator,
 } from 'react-navigation';
+
+import { MenuProvider } from 'react-native-popup-menu';
+import {
+  Menu,
+  MenuOptions,
+  MenuOption,
+  MenuTrigger,
+} from 'react-native-popup-menu';
 
 
 export default class Introduction extends React.Component {
@@ -11,10 +19,27 @@ export default class Introduction extends React.Component {
     static navigationOptions = {
         title: 'Introduction',
     };
-
+  
     render() {
 
         return (
+
+            <MenuProvider >
+            <View style={styles.menu}>
+                <Menu>
+              <MenuTrigger text='List' />
+             <MenuOptions>
+              <MenuOption onSelect={() => this.props.navigation.navigate('Introduction')} text='Introduction' />
+              <MenuOption onSelect={() => this.props.navigation.navigate('Submission')} text='Submission' />
+              <MenuOption onSelect={() => this.props.navigation.navigate('venue')} text='venue' />
+               <MenuOption onSelect={() => this.props.navigation.navigate('contact')} text='contact' />
+              <MenuOption onSelect={() => this.props.navigation.navigate('call_for_papers')} text='call_for_papers' />
+              <MenuOption onSelect={() => this.props.navigation.navigate('program')} text='program' />
+               <MenuOption onSelect={() => this.props.navigation.navigate('registration')} text='registration' />
+               <MenuOption onSelect={() => this.props.navigation.navigate('sponsor')} text='sponsor' />
+             </MenuOptions>
+              </Menu>
+          </View>
             <ScrollView style={{margin:16,borderColor:'black', flex: 1, flexDirection: 'column'}}>
                 <Text style={styles.text}>29th – 31st October, 2018
                     Abidjan, CÔTE D’IVOIRE</Text>
@@ -40,6 +65,7 @@ export default class Introduction extends React.Component {
 
                 </Text>
             </ScrollView>
+             </MenuProvider>
         );
     }
 
@@ -63,6 +89,13 @@ const styles = StyleSheet.create({
        textAlign: 'left'
 
     },
+         menu: {
+       backgroundColor:'#ffffff',
+        width: Dimensions.get('window').width, height: 25,
+
+
+
+    } ,
 
 
 });
