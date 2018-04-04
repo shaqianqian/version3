@@ -15,10 +15,9 @@ import venue from './js/local/venue';
 import program from './js/program/program';
 import sponsor from './js/sponsor/sponsor';
 import registration from './js/registration';
-import DrawerLeftPage from './DrawerLeftPage';
  export default App = StackNavigator({
   Index:{screen: Index},
-  Introduction : { screen: Introduction}, 
+  Introduction : { screen: Introduction},
   contact : { screen: contact},
   Date : { screen: Date},
   call_for_papers  : { screen: call_for_papers},
@@ -28,10 +27,9 @@ import DrawerLeftPage from './DrawerLeftPage';
   program:{screen:program},
   sponsor:{screen:sponsor},
   registration :{screen:registration} ,
-  DrawerLeftPage :{screen:DrawerLeftPage} ,
 });
-    
- 
+
+
  const styles = StyleSheet.create({
     bt: {
         backgroundColor:'#6699cc',
